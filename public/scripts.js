@@ -12,6 +12,7 @@ var interim = "";
 
 //Functions
 function colorCurrent() {
+    console.log("calledddd");
     for (var i = 0; i<currentLine.length; i++) {
         if (i == currentInspecting) {
             document.getElementById(i).style.borderBottom = "thick solid mistyrose";
@@ -63,11 +64,17 @@ function show_image(src, width, height, alt, id) {
 }
 
 function nextLevelCheck() {
-    var sizeDifference = 40;
-    if (currentInspecting > 3) {
+    var sizeDifference = 30;
+    console.log("current inspecting: " + currentInspecting + " > ? " + currentLine.length);
+    if (currentInspecting >= currentLine.length) {
+        console.log("Yes");
         currentLevel = currentLevel - sizeDifference;
         console.log("Correct! generating another with size: " + currentLevel);
         generate_image(currentLevel);
+        return true;
+    } else {
+        console.log("no");
+        return false;
     }
 }
 
@@ -75,9 +82,10 @@ function nextLetter() {
     //Play sound "small and subtle click to indicate next thing"
     //Highlight next letter
     currentInspecting+=1;
-    nextLevelCheck();
-    console.log("Now inspecting letter# "+ (currentInspecting+1) + ", "+ currentLine[currentInspecting]);
-    colorCurrent();
+    if(!nextLevelCheck()){
+        console.log("Now inspecting letter# "+ (currentInspecting+1) + ", "+ currentLine[currentInspecting]);
+        colorCurrent();
+    }
 }
 
 function sameLetter() {
@@ -87,7 +95,19 @@ function sameLetter() {
 function generate_image() {
     console.log("About to generate images");
     clearAndReset();
-    for (var i = 0; i < 4; i++) {
+    var numPics = 4;
+    if (currentLevel > 160) {
+        numPics = 1;
+    } else if (currentLevel > 130) {
+        numPics = 2;
+    } else if (currentLevel > 100) {
+        numPics = 3;
+    } else if (currentLevel > 70) {
+        numPics = 4;
+    } else if (currentLevel > 60) {
+        numPics = 5;
+    }
+    for (var i = 0; i < numPics; i++) {
         currentRand = Math.floor(Math.random() * 3);
         currentHumanWord = humanWords[currentRand];
         currentLine.push(currentHumanWord);
@@ -96,6 +116,7 @@ function generate_image() {
 
         show_image(srces[currentRand], currentLevel, currentLevel, "image", i);
     }
+    colorCurrent();
 }
 
 function controllerStart() {
