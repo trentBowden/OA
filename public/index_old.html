@@ -1,0 +1,134 @@
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>OA</title>
+  </head>
+  <body>
+<script>
+var audio = new Audio('sounds/success.wav');
+var currentSrc;
+
+function show_image(src, width, height, alt) {
+    if (src != currentSrc) {
+      currentSrc = src;
+      var img = document.createElement("img");
+      img.src = src;
+      img.width = width;
+      img.height = height;
+      img.alt = alt;
+
+      // This next line will just add it to the <body> tag
+      var theDiv=document.getElementById("display");
+      theDiv.innerHTML="";
+      theDiv.appendChild(img);
+      audio.play();
+  } else {
+    console.log("repeat");
+  }
+}
+var delayInMilliseconds = 1000; //1 second
+
+setTimeout(function() {
+  //rand between 1 and 4
+  var current = Math.floor(Math.random() * 3) + 0;
+  console.log(current);
+
+  var srces = ["images/up.png", "images/down.png", "images/left.png", "images/right.png"];
+  console.log("sources[current] is: " + srces[0]);
+  show_image(srces[current],186, 170, "down");
+
+}, delayInMilliseconds );
+
+function displayRandom() {
+  var current = Math.floor(Math.random() * 4) + 1;
+  var srces = ["images/up.png", "images/down.png", "images/left.png", "images/right.png"];
+  show_image(srces[current],186, 170, "down");
+}
+var list = ["images/up.png"];
+function addToQueue(imgsrc) {
+  list.push(imgsrc)
+}
+
+
+</script>
+
+  <div class="languages sticky">
+    <button type="button" data-language="no">Norwegian</button>
+    <button type="button" class="active" data-language="en-US">English (US)</button>
+<br/>
+
+   </div>
+
+   <style>
+   .snellen {
+     color:red;
+     font-size: 100px;
+     text-align: center;
+     text-shadow:4px 4px 0 rgba(0,0,0,0.1);
+     padding:10px;
+   }
+  </style>
+    <div id = "display">test</div>
+
+    <div class="words" contenteditable>
+
+    </div>
+
+    <script>
+
+      window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognition = new SpeechRecognition();
+      recognition.interimResults = true;
+      recognition.lang = 'en-US';
+      const languageButtons = document.querySelectorAll('[data-language]');
+      languageButtons.forEach(language = > language.addEventListener('click', setLanguage);
+      )
+      const userLanguage = window.navigator.language;
+      let selectedLanguage = '';
+      let p = document.createElement('p');
+      const words = document.querySelector('.words');
+      words.appendChild(p);
+
+      recognition.addEventListener('result', e =>{
+        //console.log(e.results);
+        const transcript = Array.from(e.results)
+          .map(result => result[0];)
+          .map(result => result.transcript;)
+          .join('');
+
+          p.textContent = transcript;
+          if(e.results[0].isFinal){
+              p = document.createElement('p');
+              words.appendChild(p);
+              window.scrollTo(0,document.body.scrollHeight); //scroller ned
+          }
+
+          if(transcript.includes('left')){
+              show_image("images/left.png",186, 170, "left");
+          }
+          if(transcript.includes('right')){
+              show_image("images/right.png",186, 170, "right");
+          }
+          if(transcript.includes('up')){
+              show_image("images/up.png",186, 170, "up");
+          }
+          if(transcript.includes('down')){
+              show_image("images/down.png",186, 170, "down");
+          }
+          console.log(transcript);
+      })
+      function setLanguage(e) {
+          selectedLanguage = this.dataset.language;
+          recognition.lang = selectedLanguage;
+          console.log('Selected language' + selectedLanguage);
+          languageButtons.forEach(language = > language.classList.remove('active');
+      )
+          this.classList.add('active');
+
+      }
+      recognition.addEventListener('end', recognition.start);
+      recognition.start();
+      </script>
+  </body>
+  </html>

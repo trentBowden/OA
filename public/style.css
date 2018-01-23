@@ -1,0 +1,113 @@
+html,
+body {
+  /*background-color: #1D2328;*/
+  height: 100%;
+  min-width: 380px;
+  /*padding: 0;*/
+  /*margin: 0;*/
+  font-family: 'Roboto', sans-serif;
+}
+
+.title {
+    padding-top: 20px;
+    padding-bottom: 5px;
+    font-weight: lighter;
+    font-size: 20pt;
+    text-align: center;
+    color: white;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-width: 200px;
+    min-height: 100%;
+}
+
+.item {
+    margin: 5px;
+    flex-grow: 1;
+    min-width: 350px;
+}
+
+#left {
+    /*min-height: 400px;*/
+    background-color: #F5F5F5;
+    min-width: 65%;
+    min-height: 80%;
+    /*flex-grow: 2;*/
+}
+#right {
+    background-color: #1D2328;
+    color: white;
+    /*flex-grow: 1;*/
+}
+.leftHeader {
+    text-align: left;
+    font-family: 'Enriqueta', arial, serif;
+    line-height: 1.25;
+    margin: 0 0 10px;
+    font-size: 40px;
+    font-weight: bold;
+}
+.leftText {
+    color: #333333;
+    font-family: "Helvetica Neue",Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5625;
+    margin-bottom: 15px;
+}
+.rightHeader {
+    text-align: center;
+    color: #ffffff;
+    font-family: 'Lato', sans-serif;
+    font-size: 54px;
+    font-weight: 300;
+    line-height: 58px;
+    margin: 0 0 58px;
+}
+.rightText {
+    /*text-align: center;*/
+    color: #adb7bd;
+    font-family: 'Lucida Sans', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    text-indent: 30px;
+    margin: 0;
+}
+.headerImage {
+    padding: 20px;
+    max-width: 20%;
+}
+.pictureArea {
+    min-height: inherit;
+}
+.blackTextContent {
+    /*border:10px solid red;*/
+    /*display:flex;*/
+    /*flex-direction: column;*/
+    justify-content: center;
+    text-align: center;
+
+}
+
+.borderLine {
+    justify-content: center;
+    width: inherit;
+    border:5px solid mistyrose;
+}
+.translation {
+    height: 50px;
+    /*background-color: antiquewhite;*/
+    flex-grow: 1;
+    flex: 1;
+
+}
+.pictureArea {
+    height: 60%;
+    /*background-color: aqua;*/
+    flex-grow: 1;
+    flex: 1;
+}
