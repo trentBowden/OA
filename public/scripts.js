@@ -9,8 +9,21 @@ var currentRand;
 var currentInspecting = 0;
 var final = "";
 var interim = "";
+var letterOver = false;
 
 //Functions
+function letterOverGet() {
+    letterOver = true;
+}
+
+function isLetterOverCheck() {
+    if (letterOver) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function colorCurrent() {
     console.log("calledddd");
     for (var i = 0; i<currentLine.length; i++) {
@@ -86,6 +99,7 @@ function nextLetter() {
         console.log("Now inspecting letter# "+ (currentInspecting+1) + ", "+ currentLine[currentInspecting]);
         colorCurrent();
     }
+    recognition.start();
 }
 
 function sameLetter() {
@@ -152,6 +166,9 @@ function isInVocabulary(word1, word2) {
 
 function isExpectedWord(word1, word2) {
     if ((word1.trim() == currentLine[currentInspecting]) || (word2.trim() == currentLine[currentInspecting])) {
+        recognition.cancel();
+        recognition.stop();
+        letterOver = true;
         return true;
     } else {
         return false;
@@ -174,26 +191,34 @@ function statusCheck(final, interim) {
 }
 
 // var recognizing;
-    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    var recognition = new SpeechRecognition();
-    recognition.continuous = true;
-    recognition.interimResults = false;
-    recognition.onresult = function (event) {
-        final = "";
-        interim = "";
-        for (var i = 0; i < event.results.length; ++i) {
-            if (event.results[i].isFinal) {
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+var grammar = '#JSGF V1.0; grammar colors; public  = up | left | right | down;';
+var recognition = new SpeechRecognition();
+var speechRecognitionList = new webkitSpeechRecognition.SpeechGrammarList();
+speechRecognitionList.addFromString(grammar, 1);
+recognition.grammars = speechRecognitionList;
+// recognition.maxAlternatives = 5;
+recognition.continuous = true;
+recognition.lang = 'en-US';
+recognition.interimResults = false;
+recognition.onresult = function (event) {
+    final = "";
+    interim = "";
+    for (var i = 0; i < event.results.length; ++i) {
+        if (!isLetterOverCheck()) {
+            if(event.results[i].isFinal) {
                 final = event.results[i][0].transcript;
             } else {
                 interim = event.results[i][0].transcript;
             }
         }
-        final_span.innerHTML = final;
-        interim_span.innerHTML = interim;
-        expected_span.innerHeight = currentLine[currentInspecting];
-        statusCheck(final, interim);
+    }
+    final_span.innerHTML = final;
+    interim_span.innerHTML = interim;
+    expected_span.innerHeight = currentLine[currentInspecting];
+    statusCheck(final, interim);
 
-    };
+};
 recognition.addEventListener('end', recognition.start);
 // recognition.onend = reset;
 recognition.start();
