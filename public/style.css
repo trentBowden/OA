@@ -35,7 +35,7 @@ body {
     /*min-height: 400px;*/
     background-color: #F5F5F5;
     min-width: 65%;
-    min-height: 80%;
+    min-height: 60%;
     /*flex-grow: 2;*/
 }
 #right {
@@ -117,4 +117,17 @@ body {
 .controlArea {
     font-size: 100%;
     display:inline-block;
+}
+
+.rotate90 {
+    transform: rotate(90deg);
+    transform-origin: 50% 50%; /* Chrome, Firefox behaves differently */
+}
+.rotate180 {
+    transform: rotate(180deg);
+    transform-origin: 50% 50%; /* Chrome, Firefox behaves differently */
+}
+.rotate270 {
+    transform: rotate(270deg);
+    transform-origin: 50% 50%; /* Chrome, Firefox behaves differently */
 }

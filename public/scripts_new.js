@@ -69,20 +69,28 @@ function generate_image() {
 }
 document.onkeydown = checkKey;
 function checkKey(e) {
-    e.preventDefault();
-    click.play();
-    console.log("key " + e.keycode);
+
+
+    // console.log("key " + e.keycode);
     e = e || window.event;
     if (e.keyCode == '38' || e.keycode == '87') {
+        click.play();
+        e.preventDefault();
         letterCalled("up");
     }
     else if (e.keyCode == '40' || e.keycode == '83') {
+        click.play();
+        e.preventDefault();
         letterCalled("down");
     }
     else if (e.keyCode == '37' || e.keycode == '65') {
+        click.play();
+        e.preventDefault();
         letterCalled("left");
     }
     else if (e.keyCode == '39' || e.keycode == '68') {
+        click.play();
+        e.preventDefault();
         letterCalled("right");
     }
 }
