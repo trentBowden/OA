@@ -1,8 +1,6 @@
 <html lang="en">
   <head>
-    <script src="/__/firebase/4.9.0/firebase-app.js"></script>
-    <script src="/__/firebase/4.9.0/firebase-database.js"></script>
-    <script src="/__/firebase/init.js"></script>
+
     <meta charset="UTF-8">
     <title>OA</title>
     <link rel="stylesheet" href="style.css">
@@ -17,9 +15,17 @@
     </div>
       <div class = "borderLine"></div>
     <div class = "blackTextContent">
-      <div id="pictureArea">
+      <div id="controlArea">
 
-        <!--This is where icons will be!-->
+        <input type="text" id="sessionID" placeholder="Session ID">
+        <button id="submit">Go!</button><br>
+
+        <!--//https://websitebuilders.com/tools/html-codes/arrows/-->
+        <button id = "upButton">&#8679</button>
+        <button id = "downButton">&#8680</button>
+        <button id = "rightButton">&#x21e9</button>
+        <button id = "leftButton">&#x21e6</button>
+
       </div>
         <div class = "translation">
           <span id="final_span"></span>
@@ -36,18 +42,17 @@
     <div class = "whiteTextContent">
       <div class = "rightHeader">Distance</div>
       <div class = "rightText">
-        Please stand back 20 feet from the screen for most accurate results. <br>
-        Score: <div id = "score">0</div> <br>
-        You are looking for: <div id = "lookingFor">..</div> <br>
-        Your previous answer was: <div id = "latestAnswer">..</div> <br>
-        Say: It is facing (Direction) OR just the (direction)
+        Use the controls on the left to control the eye test. <br>
+        Recently pressed: <div id = "mostRecent">-</div> <br>
         <br>
-        <a href="controller.html">Are you visiting this from an accompanying phone? Click here to be the controller!</a>
+        <a href="index.html">Click here for the testing page.</a>
       </div>
     </div>
   </div>
   </div>
 </body>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
-  <!--<script src = "annyang.min.js"></script>-->
-  <script src="scripts_new.js"></script>
+
+  <script src="/__/firebase/4.9.0/firebase-app.js"></script>
+  <script src="/__/firebase/4.9.0/firebase-database.js"></script>
+  <script src="/__/firebase/init.js"></script>
+  <script src="database.js"></script>

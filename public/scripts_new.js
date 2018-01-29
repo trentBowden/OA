@@ -14,7 +14,7 @@ var totalScore = 0;
 
 
 //Functions
-document.onkeydown = checkKey;
+
 function displayToUser(input) {
     console.log("Found it! you said "+ input );
     latestAnswer.innerHTML = input;
@@ -67,6 +67,7 @@ function generate_image() {
     }
     colorCurrent();
 }
+document.onkeydown = checkKey;
 function checkKey(e) {
     e.preventDefault();
     click.play();

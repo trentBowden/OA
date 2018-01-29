@@ -113,3 +113,8 @@ body {
     flex-grow: 1;
     flex: 1;
 }
+
+.controlArea {
+    font-size: 100%;
+    display:inline-block;
+}
