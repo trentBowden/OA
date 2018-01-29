@@ -131,3 +131,6 @@ body {
     transform: rotate(270deg);
     transform-origin: 50% 50%; /* Chrome, Firefox behaves differently */
 }
+.arrows {
+    display: flex;
+}
