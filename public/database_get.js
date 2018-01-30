@@ -16,14 +16,24 @@ ref.set({
 ref.on('value', function(snapshot) {
     console.log("Value found");
 
-        connectedStatus = snapshot.child("playing").val();
-        console.log("External device playing: "+ connectedStatus);
-        connectedStatusDiv.innerText = (connectedStatus ? "Ready for external controllers" : "Disconnected, offline only");
+    connectedStatus = snapshot.child("playing").val();
+    console.log("External device playing: "+ connectedStatus);
+    connectedStatusDiv.innerText = (connectedStatus ? "Ready for external controllers" : "Disconnected, offline only");
 
     changedTo = snapshot.child("direction").val();
-    console.log("direction: " + changedTo);
-    phoneAnswer.innerText = changedTo;
-    letterCalled(changedTo);
+
+    if ((changedTo == "left") ||
+        (changedTo == "right") ||
+        (changedTo == "up") ||
+        (changedTo == "down")) {
+        console.log("direction: " + changedTo);
+        phoneAnswer.innerText = changedTo;
+        letterCalled(changedTo);
+
+        ref.update({
+            direction: ""
+        });
+    }
 });
 
 console.log("Database_get JS initialised");

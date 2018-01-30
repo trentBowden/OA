@@ -22,42 +22,40 @@
         <br>
 
         <!--//https://websitebuilders.com/tools/html-codes/arrows/-->
-        <div id = "arrows">
+        <div class = "arrows">
         <h1>
           <img id="upButton" src="images/arrow.svg" width = "20%" height = "20%" class = "rotate180"/>
-          <img id="rightButton" src="images/arrow.svg" width = "20%" height = "20%" class = "rotate270"/>
-          <img id="downButton" src="images/arrow.svg" width = "20%" height = "20%"/>
+            <br>
           <img id="leftButton" src="images/arrow.svg" width = "20%" height = "20%" class = "rotate90"/>
+            <img id="rightButton" src="images/arrow.svg" width = "20%" height = "20%" class = "rotate270"/>
+            <br>
+          <img id="downButton" src="images/arrow.svg" width = "20%" height = "20%" class = "rotate0"/>
         </h1>
         </div>
-
       </div>
-        <div class = "translation">
-          <span id="final_span"></span>
-          <span id="interim_span" style="color:grey"></span>
-          <span id="expected_span"></span>
+    </div>
+  </div>
+
+      <div id = right class = "item">
+        <div class = "title">
+          <img src="images/house.svg" class="headerImage"/>
         </div>
-    </div>
-  </div>
-
-  <div id = right class = "item">
-    <div class = "title">
-      <img src="images/house.svg" class="headerImage"/>
-    </div>
-    <div class = "whiteTextContent">
-      <div class = "rightHeader" id = "connectedStatus">Controller</div>
-      <div class = "rightText">
-        Use the controls on the left to control the eye test. <br>
-        Recently pressed: <div id = "mostRecent">-</div> <br>
-        <br>
-        <a href="index.html">Click here for the testing page.</a>
+        <div class = "whiteTextContent">
+          <div class = "rightHeader" id = "connectedStatus">Controller</div>
+          <div class = "rightText">
+            Use the controls on the left to control the eye test. <br>
+            Recently pressed: <div id = "mostRecent">-</div> <br>
+            <br>
+            <a href="index.html">Click here for the testing page.</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
   </div>
 </body>
-
+  <script src = "jquery-3.3.1.min.js"></script>
   <script src="/__/firebase/4.9.0/firebase-app.js"></script>
   <script src="/__/firebase/4.9.0/firebase-database.js"></script>
   <script src="/__/firebase/init.js"></script>
   <script src="database_set.js"></script>
+
+</html>

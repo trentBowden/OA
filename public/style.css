@@ -119,18 +119,33 @@ body {
     display:inline-block;
 }
 
+.rotate0 {
+    /*background: antiquewhite;*/
+    transform-origin: 50% 50%; /* Chrome, Firefox behaves differently */
+}
 .rotate90 {
+    /*background: antiquewhite;*/
     transform: rotate(90deg);
     transform-origin: 50% 50%; /* Chrome, Firefox behaves differently */
 }
 .rotate180 {
+    /*background: antiquewhite;*/
     transform: rotate(180deg);
     transform-origin: 50% 50%; /* Chrome, Firefox behaves differently */
 }
 .rotate270 {
+    /*background: antiquewhite;*/
     transform: rotate(270deg);
     transform-origin: 50% 50%; /* Chrome, Firefox behaves differently */
 }
 .arrows {
+    /*background: antiquewhite;*/
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hidden {
+    opacity: 1;
+    transition: 1s opacity;
 }

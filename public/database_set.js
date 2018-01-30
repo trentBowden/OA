@@ -1,11 +1,11 @@
 var sessionID = "";
 var sessionIDInput = document.getElementById("sessionID");
+var mostRecent = document.getElementById("mostRecent");
 console.log("Random: " + sessionID);
 var connectedStatus = document.getElementById("connectedStatus");
 
 function setSessionID(){
     sessionID = sessionIDInput.value;
-
     return firebase.database().ref('current/' + sessionID  ).once('value').then(function(snapshot) {
         if (snapshot.child("playing").val() == true) {
             console.log("Joined game in progress");
@@ -33,8 +33,11 @@ function sessionIdIsSet() {
 function setDirection(directionInput) {
     if (sessionIdIsSet) {
         console.log("Setting direction to: "+ directionInput);
-        firebase.database().ref('current/' + sessionID+ "/direction/").set(
-            directionInput);
+        mostRecent.innerText = directionInput;
+        $("#mostRecent").fadeTo( "fast", 1 );
+        $("#mostRecent").fadeTo( "fast", .33 );
+
+        firebase.database().ref('current/' + sessionID+ "/direction/").set(directionInput);
     } else {
         console.log("Session ID not Set. Attempt to set direction failed.");
     }

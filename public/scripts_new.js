@@ -14,7 +14,16 @@ var totalScore = 0;
 
 
 //Functions
-
+function partOfVocabulary(input) {
+    if ((input == "left") ||
+        (input == "right") ||
+        (input == "up") ||
+        (input == "down")) {
+        return true;
+    } else {
+        return false;
+    }
+}
 function displayToUser(input) {
     console.log("Found it! you said "+ input );
     latestAnswer.innerHTML = input;
@@ -69,8 +78,6 @@ function generate_image() {
 }
 document.onkeydown = checkKey;
 function checkKey(e) {
-
-
     // console.log("key " + e.keycode);
     e = e || window.event;
     if (e.keyCode == '38' || e.keycode == '87') {
@@ -162,9 +169,12 @@ function nextLetter() {
 }
 
 function letterCalled(input){
-    displayToUser(input);
-    correctLetterCheck(input);
-    nextLetter();
+    console.log("Letter has been called!" + input);
+    if (partOfVocabulary(input)) {
+        displayToUser(input);
+        correctLetterCheck(input);
+        nextLetter();
+    }
 }
 
 //Start it all off
