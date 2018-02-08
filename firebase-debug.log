@@ -1,41 +1,41 @@
-[debug] [2018-02-08T04:11:44.560Z] ----------------------------------------------------------------------
-[debug] [2018-02-08T04:11:44.562Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
-[debug] [2018-02-08T04:11:44.562Z] CLI Version:   3.16.0
-[debug] [2018-02-08T04:11:44.562Z] Platform:      darwin
-[debug] [2018-02-08T04:11:44.562Z] Node Version:  v8.9.2
-[debug] [2018-02-08T04:11:44.562Z] Time:          Thu Feb 08 2018 15:11:44 GMT+1100 (AEDT)
-[debug] [2018-02-08T04:11:44.563Z] ----------------------------------------------------------------------
+[debug] [2018-02-08T11:51:49.024Z] ----------------------------------------------------------------------
+[debug] [2018-02-08T11:51:49.026Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-02-08T11:51:49.027Z] CLI Version:   3.16.0
+[debug] [2018-02-08T11:51:49.027Z] Platform:      darwin
+[debug] [2018-02-08T11:51:49.027Z] Node Version:  v8.9.2
+[debug] [2018-02-08T11:51:49.027Z] Time:          Thu Feb 08 2018 22:51:49 GMT+1100 (AEDT)
+[debug] [2018-02-08T11:51:49.027Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-02-08T04:11:44.578Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-02-08T04:11:44.578Z] > authorizing via signed-in user
-[debug] [2018-02-08T04:11:44.580Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2018-02-08T04:11:44.581Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+[debug] [2018-02-08T11:51:49.041Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-02-08T11:51:49.041Z] > authorizing via signed-in user
+[debug] [2018-02-08T11:51:49.042Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-02-08T11:51:49.043Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
  { refresh_token: '1/X4RAeFFvIdJeHIFWmEyhvNbrW4sUGASdqtKw4PVebCs',
   client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
   client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
   grant_type: 'refresh_token',
   scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Thu Feb 08 2018 15:11:44 GMT+1100 (AEDT)
-[debug] [2018-02-08T04:11:44.932Z] <<< HTTP RESPONSE 200
-[debug] [2018-02-08T04:11:44.941Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/visual-acuity-finder  
+ Thu Feb 08 2018 22:51:49 GMT+1100 (AEDT)
+[debug] [2018-02-08T11:51:49.608Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-08T11:51:49.621Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/visual-acuity-finder  
   
- Thu Feb 08 2018 15:11:44 GMT+1100 (AEDT)
-[debug] [2018-02-08T04:11:46.043Z] <<< HTTP RESPONSE 200
-[debug] [2018-02-08T04:11:46.044Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/visual-acuity-finder/tokens  
+ Thu Feb 08 2018 22:51:49 GMT+1100 (AEDT)
+[debug] [2018-02-08T11:51:51.751Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-08T11:51:51.752Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/visual-acuity-finder/tokens  
   
- Thu Feb 08 2018 15:11:46 GMT+1100 (AEDT)
-[debug] [2018-02-08T04:11:46.964Z] <<< HTTP RESPONSE 200
+ Thu Feb 08 2018 22:51:51 GMT+1100 (AEDT)
+[debug] [2018-02-08T11:51:53.184Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/Users/tbowden/Desktop/git/optomApp'...
 [info] 
-[debug] [2018-02-08T04:11:46.967Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/visual-acuity-finder  
+[debug] [2018-02-08T11:51:53.187Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/visual-acuity-finder  
   
- Thu Feb 08 2018 15:11:46 GMT+1100 (AEDT)
-[debug] [2018-02-08T04:11:48.636Z] <<< HTTP RESPONSE 200
-[debug] [2018-02-08T04:11:48.638Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/262551520515/clients/_:getWebAppConfig  
+ Thu Feb 08 2018 22:51:53 GMT+1100 (AEDT)
+[debug] [2018-02-08T11:51:55.337Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-08T11:51:55.339Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/262551520515/clients/_:getWebAppConfig  
   
- Thu Feb 08 2018 15:11:48 GMT+1100 (AEDT)
-[debug] [2018-02-08T04:11:49.993Z] <<< HTTP RESPONSE 200
+ Thu Feb 08 2018 22:51:55 GMT+1100 (AEDT)
+[debug] [2018-02-08T11:51:56.672Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: public
 [info] ✔  hosting: Local server: http://localhost:5000
 

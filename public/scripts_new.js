@@ -25,6 +25,46 @@ var currentLevel = 0;
 
 $("#select_dialect").hide();
 
+var slider = document.getElementById("myRange");
+// var output = document.getElementById("demo");
+// output.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+    // output.innerHTML = this.value;
+    // console.log(this.value);
+    var currentWidth = ($( "#rulerContainer" ).width()/100) * this.value;
+    // console.log("5cm is equal to: " + currentWidth + " pixels");
+    $("#cmEqTo").text("1cm on your screen is equivalent to: "+ currentWidth/5 + " pixels");
+    $( "#ruler" ).animate({
+        width: [currentWidth]
+    }, 0, function() {
+        updateLetterSizing(currentWidth/5);
+    });
+};
+
+
+function updateLetterSizing(input){
+    var dist = measurementList[currentLevel];
+    var degrees = tanDegrees(5/dist);
+    var sizeM = degrees * dist;
+    var sizeCM = sizeM * 100;
+    var sizePixels = sizeCM * input;
+
+
+    console.log(input + " pixels to 1 cm");
+    console.log("Current distance is 20/"+dist);
+    console.log("To subtend an angle of 5 minutes, at length " + dist);
+    console.log("tan(5/"+dist+") in degrees = " + degrees);
+    console.log(degrees + " = x/" +dist);
+    console.log("x = "+ sizeM + "meters");
+    console.log("= " + sizePixels + " pixels tall")
+
+    $("#explanationHeight").text("tan(5/"+dist+") deg * " + dist + " = " + sizeM + "m");
+    $("#heightReading").text("At "+input+" pixels/1cm, 20/"+dist+" = "+ sizePixels + " pixels");
+
+
+}
 
 function letterSize(dist) {
     var letterSizeMeters = (tanDegrees(5/60))*dist;
@@ -34,7 +74,7 @@ function letterSize(dist) {
 
 function tanDegrees(angle) {
     return Math.tan(angle/180*Math.PI);
-};
+}
 
 for(var i = 0; i<measurementList.length; i++) {
     sizeForLevels.push(letterSize(measurementList[i]));

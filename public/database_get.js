@@ -28,7 +28,7 @@ ref.on('value', function(snapshot) {
         (changedTo == "up") ||
         (changedTo == "down")) {
         console.log("direction: " + changedTo);
-        phoneAnswer.innerText = changedTo;
+        // phoneAnswer.innerText = changedTo;
         letterCalled(changedTo);
 
         ref.update({
