@@ -188,12 +188,14 @@ function show_image(src, width, height, alt, id) {
     tumblingE.height = height;
     tumblingE.alt = alt;
     tumblingE.id = id;
-    tumblingE.paddingRight = "50px";
+    // tumblingE.syle.padding-right = "40 px";
+    // tumblingE.padding = 0  0 0;
 
     // This next line will just add it to the <body> tag
     var theDiv = document.getElementById("pictureArea");
+
     theDiv.appendChild(tumblingE);
-    theDiv.innerHTML += "    ";
+    document.getElementById(id).style.padding = "0px "+(currentLetterSize/10)+ "px 0px "+ (currentLetterSize/10) +"px";
     audio.play();
 }
 function colorCurrent() {
