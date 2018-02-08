@@ -19,6 +19,17 @@ input[type=number] {
     height: auto;
 }
 
+input[type=text] {
+    border: 2px solid #3377cc;
+    border-radius: 4px;
+    background-color: #3377cc;
+    font-size: 54px;
+    overflow: hidden;
+    max-width: 100px;
+    color: white;
+    height: auto;
+}
+
 #ruler {
     width: 100%
     height: 50px;
