@@ -21,6 +21,9 @@ var distanceFromChart = 6;
 var measurementList = [61,30.5,21.3,15.2,12.2,9.14, 7.62, 6.10];
 var sizeForLevels = [];
 var currentLevel = 0;
+var currentLetterSize = 60;
+var currentSliderWidth = 60;
+var eyeToCover = "left";
 //Functions
 
 $("#select_dialect").hide();
@@ -33,37 +36,35 @@ var slider = document.getElementById("myRange");
 slider.oninput = function() {
     // output.innerHTML = this.value;
     // console.log(this.value);
-    var currentWidth = ($( "#rulerContainer" ).width()/100) * this.value;
+    currentSliderWidth = (($( "#rulerContainer" ).width()/100) * this.value)/5;
     // console.log("5cm is equal to: " + currentWidth + " pixels");
-    $("#cmEqTo").text("1cm on your screen is equivalent to: "+ currentWidth/5 + " pixels");
+    $("#cmEqTo").text("1cm on your screen is equivalent to: "+ currentSliderWidth + " pixels");
     $( "#ruler" ).animate({
-        width: [currentWidth]
+        width: [currentSliderWidth*5]
     }, 0, function() {
-        updateLetterSizing(currentWidth/5);
+        generate_image();
     });
 };
 
-
-function updateLetterSizing(input){
+function updateLetterSizing(){
     var dist = measurementList[currentLevel];
-    var degrees = tanDegrees(5/dist);
+    var degrees = tanDegrees(5/60);
     var sizeM = degrees * dist;
     var sizeCM = sizeM * 100;
-    var sizePixels = sizeCM * input;
+    var sizePixels = sizeCM * currentSliderWidth;
 
-
-    console.log(input + " pixels to 1 cm");
+    console.log(currentSliderWidth + " pixels to 1 cm");
     console.log("Current distance is 20/"+dist);
     console.log("To subtend an angle of 5 minutes, at length " + dist);
-    console.log("tan(5/"+dist+") in degrees = " + degrees);
+    console.log("tan(5/60) in degrees = " + degrees);
     console.log(degrees + " = x/" +dist);
-    console.log("x = "+ sizeM + "meters");
-    console.log("= " + sizePixels + " pixels tall")
+    console.log("x = "+ sizeM + " meters");
+    console.log("= " + sizePixels + " pixels tall");
 
     $("#explanationHeight").text("tan(5/"+dist+") deg * " + dist + " = " + sizeM + "m");
-    $("#heightReading").text("At "+input+" pixels/1cm, 20/"+dist+" = "+ sizePixels + " pixels");
+    $("#heightReading").text("At "+currentSliderWidth+" pixels/1cm, 20/"+dist+" = "+ sizePixels + " pixels");
 
-
+    currentLetterSize = sizePixels;
 }
 
 function letterSize(dist) {
@@ -119,40 +120,29 @@ function correctLetterCheck(input){
     }
 }
 function generate_image() {
+
+    if (currentLevel < 6) {
+        $("#instructionsEyeCover").text("Cover " + eyeToCover + " eye");
+    } else if ((eyeToCover == "left") && (currentLevel == 6)) {
+        eyeToCover = "right";
+        currentLevel = 0;
+        $("#instructionsEyeCover").text("Cover " + eyeToCover + " eye");
+    } else if ((eyeToCover == "right") && (currentLevel == 6)) {
+        alert("You're done!");
+    }
+
     console.log("About to generate images");
     clearAndReset();
-    var numPics = 4;
-    //There should be seven/eight levels
-    if (currentSize >= startingSize) {
-        numPics = 1;
-        //20/200
-    } else if (currentSize >= startingSize-(1*sizeDifference)) {
-        numPics = 2;
-        //20/100
-    } else if (currentSize >= startingSize-(2*sizeDifference)) {
-        numPics = 3;
-        //20/70
-    } else if (currentSize >= startingSize-(3*sizeDifference)) {
-        numPics = 4;
-        //20/50
-    } else if (currentSize >= startingSize-(4*sizeDifference)) {
-        numPics = 5;
-        //20/40
-    } else if (currentSize >= startingSize-(5*sizeDifference)) {
-        numPics = 6;
-        //20/30
-    } else if (currentSize >= startingSize-(6*sizeDifference)) {
-        numPics = 7;
-        //20/20
-    } else if (currentSize >= startingSize-(7*sizeDifference)) {
-        numPics = 8;
-    }
+    updateLetterSizing();
+    var numPics = currentLevel+1;
+
+
     for (var i = 0; i < numPics; i++) {
         currentRand = Math.floor(Math.random() * 3);
         currentHumanWord = humanWords[currentRand];
         currentLine.push(currentHumanWord);
         //Transform: rotate(180deg)
-        show_image(srces[currentRand], currentSize, currentSize, "image", i);
+        show_image(srces[currentRand], currentLetterSize, currentLetterSize, "image", i);
     }
     colorCurrent();
 }
@@ -233,6 +223,7 @@ function nextLevelCheck() {
     if (currentInspecting+1 >= currentLine.length) {
         currentSize = currentSize - sizeDifference;
         generate_image(currentSize);
+        currentLevel++;
         return true;
     } else {
         return false;
@@ -240,14 +231,14 @@ function nextLevelCheck() {
 }
 function nextLetter() {
     //Play sound "small and subtle click to indicate next thing"
-    if(!finishedEntiretyCheck()){
+    // if(!finishedEntiretyCheck()){
         if (!nextLevelCheck()) {
             click.play();
             currentInspecting += 1;
             console.log("Now inspecting letter# " + (currentInspecting + 1) + ", " + currentLine[currentInspecting]);
             colorCurrent();
         }
-    }
+    // }
 }
 function letterCalled(input){
     console.log("user has said: " + input);
