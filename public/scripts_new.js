@@ -249,7 +249,8 @@ function letterCalled(input){
         displayToUser(englishWord);
         correctLetterCheck(englishWord);
         nextLetter();
-    }
+        return true;
+    } return false;
 }
 
 function checkWordIsCorrect() {

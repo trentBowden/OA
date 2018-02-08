@@ -150,11 +150,27 @@ if (!('webkitSpeechRecognition' in window)) {
             if (event.results[i].isFinal) {
                 var res = event.results[i][0].transcript;
                 final_transcript += res;
-                letterCalled(res);
+
+                var oneIsEnough = false;
+
+                if (letterCalled(res)) {
+                    oneIsEnough = true;
+                    recognition.abort();
+                    setTimeout(function (){
+                        recognition.start();
+                    }, 300);
+                }
+
             } else {
                 var res = event.results[i][0].transcript;
                 interim_transcript += res;
-                letterCalled(res);
+                if (letterCalled(res) && !oneIsEnough) {
+                    recognition.abort();
+                    setTimeout(function (){
+                        recognition.start();
+                    }, 300);
+
+                }
             }
         }
         final_transcript = capitalize(final_transcript);
