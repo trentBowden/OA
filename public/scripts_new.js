@@ -21,9 +21,12 @@ var distanceFromChart = 6;
 var measurementList = [61,30.5,21.3,15.2,12.2,9.14, 7.62, 6.10];
 var sizeForLevels = [];
 var currentLevel = 0;
+var rightThisLevel = 0;
 var currentLetterSize = 60;
 var currentSliderWidth = 60;
 var eyeToCover = "left";
+var moreThanHalfOfLeft = 0;
+var moreThanHalfOfRight = 0;
 //Functions
 
 $("#select_dialect").hide();
@@ -128,7 +131,9 @@ function generate_image() {
         currentLevel = 0;
         $("#instructionsEyeCover").text("Cover " + eyeToCover + " eye");
     } else if ((eyeToCover == "right") && (currentLevel == 6)) {
-        alert("You're done!");
+        alert("LEFT EYE: 6/"+measurementList[moreThanHalfOfLeft] + "\n" +
+        "RIGHT EYE: 6/"+measurementList[moreThanHalfOfRight]+ ". \n" +
+            "Thank you for completing the test!");
     }
 
     console.log("About to generate images");
@@ -223,6 +228,16 @@ function finishedEntiretyCheck() {
 }
 function nextLevelCheck() {
     if (currentInspecting+1 >= currentLine.length) {
+        //Let me know about if they've done half
+        if (rightThisLevel >= ((currentLevel+1)/2)){
+            if (eyeToCover == "left") {
+                moreThanHalfOfLeft = currentLevel;
+            } else {
+                moreThanHalfOfRight = currentLevel;
+            }
+
+        }
+        rightThisLevel = 0;
         currentSize = currentSize - sizeDifference;
         generate_image(currentSize);
         currentLevel++;
@@ -246,6 +261,7 @@ function letterCalled(input){
     console.log("user has said: " + input);
     var englishWord;
     if (englishWord = partOfVocabulary(input)) {
+        rightThisLevel++;
         displayToUser(englishWord);
         correctLetterCheck(englishWord);
         nextLetter();
