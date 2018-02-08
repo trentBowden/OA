@@ -31,30 +31,84 @@
 
   <div id = right class = "item">
     <div class = "title">
-      <img src="images/house.svg" class="headerImage"/>
+      <div id="div_language" class = "selectors language rightHeader" >
+          <img src = "images/globe.ico" width="60px" height="60px">
+          <!--I am speaking-->
+        <select id="select_language" onchange="updateCountry()"></select>
+        <select id="select_dialect" class = "dialect"></select>
+          <!--&nbsp;-->
+          <a class = "microphone" onclick="startButton(event)">Speak</a>
+          <!--<input type="image" src="images/microphone-icon.svg" height = "34px" width = "34px" onclick="startButton(event)"/>-->
+      </div>
     </div>
     <div class = "whiteTextContent">
-      <div class = "rightHeader">Distance</div>
+
+
+      <!--Start -->
+      <div id="info" display="none">
+        <!--<p id="info_start">Click on the microphone icon and begin speaking.</p>-->
+        <p id="info_speak_now"></p>
+        <p id="info_no_speech">No speech was detected. You may need to adjust your
+          <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
+            microphone settings</a>.</p>
+        <p id="info_no_microphone" style="display:none">
+          No microphone was found. Ensure that a microphone is installed and that
+          <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
+            microphone settings</a> are configured correctly.</p>
+        <p id="info_allow">Click the "Allow" button above to enable your microphone.</p>
+        <p id="info_denied">Permission to use microphone was denied.</p>
+        <p id="info_blocked">Permission to use microphone is blocked. To change,
+          go to chrome://settings/contentExceptions#media-stream</p>
+        <p id="info_upgrade">Web Speech API is not supported by this browser.
+          Upgrade to <a href="//www.google.com/chrome">Chrome</a>
+          version 25 or later.</p>
+      </div>
+
+      <div id="results">
+        <span id="final_span" class="final"></span>
+        <span id="interim_span" class="interim"></span>
+        <p>
+      </div>
+      <div class="center">
+        <p>
+
+      </div>
+      <!--Stop  -->
+
+      <!--//TODO remove annyang, then put in this new one, reroute where the interim results go-->
+      <!--TODO Eventually get rid of all that is above.-->
+      <div class = "rightHeader">
+          <img src="images/distance.png" width="60px" height="60px">
+        &nbsp; Distance =
+          <input type="number" id="sessionID" height="30px" value="20">m
+      </div>
       <div class = "rightText">
-        Please stand back 20 feet from the screen for most accurate results. <br>
-        Score: <div id = "score">0</div> <br>
-        You are looking for: <div id = "lookingFor">..</div> <br>
-        Your previous answer was: <div id = "latestAnswer">..</div> <br>
-        Say: It is facing (Direction) OR just the (direction)
-        <br>
-        Are you visiting this from an accompanying phone?
-        <a href="controller.html">Click here</a>
-        to be the controller!
-        <br>
-        <h1>Room Code: <div id = "roomCode">-</div></h1>
-        <h1 id = connectedStatus>Connection pending...</h1>
+        <!--Score: <div id = "score">0</div> <br>-->
+        <!--You are looking for: <div id = "lookingFor">..</div> <br>-->
+        <!--Here are the words we're picking up <div id = "latestAnswer">..</div> <br>-->
+        <!--Say: It is facing (Direction) OR just the (direction)-->
+        <!--<br>-->
+        <!--Are you visiting this from an accompanying phone?-->
+        <!--<a href="controller.html">Click here</a>-->
+        <!--to be the controller!-->
+        <!--<br>-->
+
+        <div class = "rightHeader ">
+            <a href="controller.html">
+                <img src="images/smartphone.png" height="60px" width="60px"> </a>
+            Room Code:
+            <div id = "roomCode">-</div>
+        </div>
+        <p id = connectedStatus>Connection pending...</p>
         <h2>Phone answer: <div id = "phoneAnswer">-</div></h2>
       </div>
     </div>
   </div>
   </div>
 </body>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+  <!--<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>-->
   <!--<script src = "annyang.min.js"></script>-->
+  <script src="jquery-3.3.1.min.js"></script>
+  <script src="webSpeechDemo.js"></script>
   <script src="scripts_new.js"></script>
   <script src="database_get.js"></script>

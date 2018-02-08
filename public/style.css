@@ -8,6 +8,81 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+input[type=number] {
+    border: 2px solid #3377cc;
+    siz
+    border-radius: 4px;
+    background-color: #3377cc;
+    font-size: 54px;
+    overflow: hidden;
+    max-width: 100px;
+    color: white;
+    height: auto;
+}
+
+.language {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    align-content: center;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: white;
+    height: auto;
+    /*background-color: #E2EBFB;*/
+    overflow: hidden;
+    font-size: 16px;
+}
+
+.microphone {
+    padding: 4px 10px 4px 10px;
+    background-color: #C7291D;
+    border-radius: 12px;
+    color: white;
+    opacity: 50;
+}
+
+.language select {
+    color: white;
+    text-decoration-color: #C7291D;
+    background: transparent;
+    width: 190px;
+    /*max-width: 90px;*/
+    /*padding: 5px; */
+    /*font-size: 16px;*/
+    /*line-height: 1;*/
+    border: 0;
+    border-radius: 0;
+    /*height: 34px;*/
+    -webkit-appearance: none;
+    /*color: #000;*/
+    /*color: black;*/
+
+
+    text-align: center;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
+    /*color: #ffffff;*/
+    font-family: 'Lato', sans-serif;
+    font-size: 54px;
+    font-weight: 100;
+    /*line-height: 58px;      */
+    /*margin: 0 0 58px;*/
+}
+
+/*.dialect select {*/
+    /*background-image: url("images/house.svg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: right center;*/
+    /*background-size: 30px 30px;*/
+    /*height: 34px;*/
+    /*background-color: red;*/
+/*}*/
+
 .title {
     padding-top: 20px;
     padding-bottom: 5px;
@@ -37,10 +112,13 @@ body {
     min-width: 65%;
     min-height: 60%;
     /*flex-grow: 2;*/
+    border-radius: 10px;
 }
 #right {
-    background-color: #1D2328;
+    /*background-color: #1D2328;*/
+    background-color: #315BE1;
     color: white;
+    border-radius: 10px;
     /*flex-grow: 1;*/
 }
 .leftHeader {
@@ -61,6 +139,10 @@ body {
 }
 .rightHeader {
     text-align: center;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
     color: #ffffff;
     font-family: 'Lato', sans-serif;
     font-size: 54px;
@@ -69,8 +151,10 @@ body {
     margin: 0 0 58px;
 }
 .rightText {
+
     text-align: center;
-    color: #adb7bd;
+    /*color: #adb7bd;*/
+    color: white;
     font-family: 'Lucida Sans', Arial, sans-serif;
     font-size: 16px;
     line-height: 26px;
@@ -98,7 +182,7 @@ body {
 .borderLine {
     justify-content: center;
     width: inherit;
-    border:5px solid mistyrose;
+    border:5px solid #E0EBFD;
 }
 .translation {
     height: 50px;
