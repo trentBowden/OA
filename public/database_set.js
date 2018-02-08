@@ -4,6 +4,10 @@ var mostRecent = document.getElementById("mostRecent");
 console.log("Random: " + sessionID);
 var connectedStatus = document.getElementById("connectedStatus");
 
+// function letterCalled(input) {
+//     setDirection(input);
+// }
+
 function setSessionID(){
     sessionID = sessionIDInput.value;
     return firebase.database().ref('current/' + sessionID  ).once('value').then(function(snapshot) {
